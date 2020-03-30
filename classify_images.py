@@ -70,7 +70,7 @@ def classify_images(images_dir, results_dic, model):
         classifier_labels = classifier(images_dir + key, model)
         # formatting labels with a proper way
         classifier_labels = classifier_labels.lower().strip()
-        # add dictionaly elements as a list that contains [pet image labels, classified labels]
+        # add dictionaly elements with two elements [pet image labels, classified labels]
         results_dic[key] = [value, classifier_labels]
             
         # add a match indicator value at the end of list. 0 -> no match // 1 -> match
