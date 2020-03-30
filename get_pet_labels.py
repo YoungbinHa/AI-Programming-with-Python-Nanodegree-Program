@@ -4,7 +4,7 @@
 #                                                                             
 # PROGRAMMER: Youngbin Ha
 # DATE CREATED: 3/24/2020                                  
-# REVISED DATE: 3/24/2020
+# REVISED DATE: 3/29/2020
 # PURPOSE: Create the function get_pet_labels that creates the pet labels from 
 #          the image's filename. This function inputs: 
 #           - The Image Folder as image_dir within get_pet_labels function and 
@@ -44,13 +44,23 @@ def get_pet_labels(image_dir):
     
     results_dic = dict()
     
+    # fetch all filenames from the image_dir list
     for idx in range(0, len(filenames), 1):
+        # if the filename starts with '.' skip it.
+        if filenames[idx][0] == ".":
+            continue
+            
         if filenames[idx] not in results_dic:
+            # get file names with proper formatting : lower case
             labels = filenames[idx].lower().split("_")
+            # set a variable to store the pet name
             pet_name = ""
+            # check if the formatted labels are an alphabet or not.
             for label in labels:
+                # if it is an alphabet add to variables
                 if label.isalpha():
                     pet_name += label + " "
+                # remove whitespace to set it up with proper formatting
             results_dic[filenames[idx]] = pet_name.strip()
         else:
             print("the key is already in the dictionary")
